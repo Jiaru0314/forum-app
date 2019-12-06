@@ -1,0 +1,45 @@
+<resources>
+    <string name="app_name">forum-app</string>
+
+    <string name="login">登录</string>
+    <string name="login_input_username_hint">用户名</string>
+    <string name="hint_password">密码</string>
+    <string name="login_hold_hint">自动登录</string>
+    <string name="login_forget_hint">忘记密码？</string>
+    <string name="login_register_hint">注册</string>
+    <string name="login_other_hint">其他方式登录</string>
+    <string name="register_input_username_hint">手机号</string>
+    <string name="register_username_hint">用户名</string>
+    <string name="register_sms_auth_code">短信验证码</string>
+    <string name="register_sms_hint">获取验证码</string>
+    <string name="register_sms_wait_hint">别激动,休息一下呗&#8230;</string>
+
+    <string name="loading_image">正在准备图片...</string>
+    <string name="register_done_hint">完成</string>
+    <string name="register_man_hint">男士</string>
+    <string name="register_female_hint">女士</string>
+    <string name="retrieve_pwd_step_hint">下一步</string>
+    <string name="retrieve_pwd_email_label_one">邮箱用户找回密码，请</string>
+    <string name="retrieve_pwd_email_label"><a>点击这里</a></string>
+    <string name="reset_pwd_hint">请输入至少六位新密码</string>
+    <string name="register_pwd_hint">请输入至少六位数密码</string>
+    <string name="reset_pwd_submit">确认</string>
+    <string name="message_pwd_error">密码错误</string>
+    <string name="message_username_null">用户名未填写！！！</string>
+    <string name="u_page_title">我的</string>
+    <string name="u_page_fans">粉丝</string>
+    <string name="u_page_enter">访问</string>
+    <string name="u_page_advise">意见反馈</string>
+    <string name="u_page_setting">设置</string>
+    <string name="u_page_history">最近浏览</string>
+    <string name="u_page_message">我的消息</string>
+    <string name="u_page_follow">我的关注</string>
+    <string name="u_page_collection">我的收藏</string>
+    <string name="u_page_blog">我的博客</string>
+    <string name="u_page_order">54321</string>
+    <string name="u_page_username">放荡不羁爱自由</string>
+    <string name="u_page_decp">此用户很懒，暂未留下介绍</string>
+    <string name="u_page_follow_num">8</string>
+    <string name="u_page_fans_num">0</string>
+
+</resources>
