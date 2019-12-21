@@ -16,13 +16,12 @@ import com.bumptech.glide.Glide;
 import com.jit.R;
 import com.jit.avtivity.BlogActivity;
 import com.jit.bean.BlogDto;
-import com.jit.util.HttpUtil;
+import com.jit.utils.HttpUtil;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
 
 /**
  * author : XZQ
@@ -56,7 +55,7 @@ public class LinearBlogAdapter extends RecyclerView.Adapter<LinearBlogAdapter.Li
         String path = blogDto.getAvatar().substring(1);
         Glide.with(context).load(HttpUtil.BaseUrl + path).into(holder.imageView);//  .skipMemoryCache(true)禁止默认内存缓存
         Intent intent = new Intent(context, BlogActivity.class);
-        intent.putExtra("blogId", position + 1);
+        intent.putExtra("blogId", blogDto.getId());
         holder.linearLayout.setOnClickListener((v) -> context.startActivity(intent));
     }
 

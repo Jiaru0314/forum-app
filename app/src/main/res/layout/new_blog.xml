@@ -1,0 +1,182 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/text_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="新博客"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/title_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="标题"
+            android:textSize="24sp">
+
+        </EditText>
+    </LinearLayout>
+
+
+    <com.jit.editor.RichEditor
+        android:id="@+id/re_main_editor"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:id="@+id/ll_main_color"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#f2f1f6"
+        android:visibility="gone">
+
+        <com.jit.editor.ColorPickerView
+            android:id="@+id/cpv_main_color"
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:layout_gravity="center"
+            android:background="#f2f1f6"
+            app:indicatorColor="#fff"
+            app:indicatorEnable="true"
+            app:orientation="horizontal" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="#f2f1f6">
+
+        <HorizontalScrollView
+            style="@style/EditorIcon"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toStartOf="@+id/tv_post_blog"
+            android:layout_toLeftOf="@+id/tv_post_blog"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/button_image"
+                    style="@style/EditorIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@mipmap/photo" />
+
+                <ImageView
+                    android:id="@+id/button_bold"
+                    style="@style/EditorIcon"
+                    android:src="@mipmap/bold" />
+
+                <TextView
+                    android:id="@+id/button_text_color"
+                    style="@style/EditorIcon"
+                    android:layout_width="32dp"
+                    android:layout_height="20dp"
+                    android:background="@color/colorPrimary" />
+
+
+                <ImageView
+                    android:id="@+id/button_list_ol"
+                    style="@style/EditorIcon"
+                    android:src="@mipmap/list_ol" />
+
+                <ImageView
+                    android:id="@+id/button_list_ul"
+                    style="@style/EditorIcon"
+                    android:src="@mipmap/list_ul" />
+
+                <ImageView
+                    android:id="@+id/button_underline"
+                    style="@style/EditorIcon"
+                    android:src="@mipmap/underline" />
+
+                <ImageView
+                    android:id="@+id/button_italic"
+                    style="@style/EditorIcon"
+                    android:src="@mipmap/lean" />
+
+                <ImageView
+                    android:id="@+id/button_align_left"
+                    style="@style/EditorIcon"
+                    android:src="@mipmap/align_left" />
+
+                <ImageView
+                    android:id="@+id/button_align_center"
+                    style="@style/EditorIcon"
+                    android:src="@mipmap/align_center" />
+
+                <ImageView
+                    android:id="@+id/button_align_right"
+                    style="@style/EditorIcon"
+                    android:src="@mipmap/align_right" />
+
+                <ImageView
+                    android:id="@+id/button_indent"
+                    style="@style/EditorIcon"
+                    android:src="@mipmap/indent" />
+
+                <ImageView
+                    android:id="@+id/button_outdent"
+                    style="@style/EditorIcon"
+                    android:src="@mipmap/outdent" />
+
+                <ImageView
+                    android:id="@+id/action_blockquote"
+                    style="@style/EditorIcon"
+                    android:src="@mipmap/blockquote" />
+
+                <ImageView
+                    android:id="@+id/action_strikethrough"
+                    style="@style/EditorIcon"
+                    android:src="@mipmap/strikethrough" />
+
+                <ImageView
+                    android:id="@+id/action_superscript"
+                    style="@style/EditorIcon"
+                    android:src="@mipmap/superscript" />
+
+                <ImageView
+                    android:id="@+id/action_subscript"
+                    style="@style/EditorIcon"
+                    android:src="@mipmap/subscript" />
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <TextView
+            android:id="@+id/tv_post_blog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:onClick="postBlog"
+            android:paddingLeft="14dp"
+            android:paddingRight="14dp"
+            android:text="发布"
+            android:textColor="#dd3333"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+</LinearLayout>
+
+
+
+

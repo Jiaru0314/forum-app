@@ -15,8 +15,8 @@
             android:id="@+id/iv_back"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="5dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="5dp"
             android:onClick="blogPage_back"
             android:src="@mipmap/back" />
 
@@ -24,21 +24,21 @@
             android:id="@+id/iv_size"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="15dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="15dp"
             android:src="@mipmap/ziti" />
     </RelativeLayout>
 
     <ScrollView
         android:id="@+id/blog_scroll"
         android:layout_width="match_parent"
-        android:layout_height="600dp"
+        android:layout_height="0dp"
         android:layout_weight="1">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:orientation="vertical">
 
             <TextView
@@ -48,7 +48,7 @@
                 android:layout_marginTop="20dp"
                 android:text="一生必看的纪录片"
                 android:textColor="#0C0C0C"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/blog_createTime"
@@ -57,7 +57,7 @@
                 android:layout_marginTop="10dp"
                 android:text="10月19日"
                 android:textColor="#555353"
-                android:textSize="15dp" />
+                android:textSize="15sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -121,56 +121,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="#303F9F" />
-                <!--评论-->
 
-                <LinearLayout
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_comments"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginLeft="10dp"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content" />
 
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_marginTop="10dp"
-                        android:src="@mipmap/avatar01" />
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/comment_name"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginTop="10dp"
-                            android:text="甲如"
-                            android:textColor="#145A92" />
-
-                        <TextView
-                            android:id="@+id/comment_createTime"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_toRightOf="@id/comment_name"
-                            android:text="6小时前"
-                            android:textColor="#48494646" />
-
-                        <TextView
-                            android:id="@+id/comment_content"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/comment_name"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginTop="10dp"
-                            android:text="很值得看"
-                            android:textColor="#292424" />
-                    </RelativeLayout>
-
-                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
@@ -190,17 +146,30 @@
             android:textSize="16dp" />
 
         <EditText
-            android:layout_width="200dp"
+            android:id="@+id/edit_comment"
+            android:layout_width="160dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="20dp"
             android:hint="想对Ta说点什么" />
 
         <TextView
-            android:id="@+id/blof_prefers"
+            android:id="@+id/comment_submit"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:background="#FFFFFF"
+            android:gravity="center"
+            android:onClick="comment_submit"
+            android:text="提交"
+            android:textSize="16sp"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/blog_prefer"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginLeft="30dp"
-            android:drawableLeft="@drawable/singleline"
+            android:layout_marginStart="10dp"
+            android:drawableStart="@drawable/singleline"
             android:gravity="center"
             android:text="100" />
 
@@ -208,7 +177,7 @@
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_gravity="center"
-            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:src="@mipmap/share" />
 
     </LinearLayout>

@@ -24,18 +24,19 @@
             android:queryHint="搜索博文/帖子/用户" />
 
         <ImageView
+            android:id="@+id/toNewBlog"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_gravity="center_vertical|end"
             android:layout_margin="15dp"
-            android:src="@mipmap/saoma" />
+            android:onClick="toNewBlog"
+            android:src="@mipmap/fabu" />
     </LinearLayout>
 
     <FrameLayout
         android:id="@+id/fl_main"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_below="@id/linear_head"
         android:layout_weight="1" />
 
 

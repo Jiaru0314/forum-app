@@ -3,7 +3,7 @@ package com.jit.retrofit;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonDeserializer;
-import com.jit.util.HttpUtil;
+import com.jit.utils.HttpUtil;
 
 import java.util.Date;
 import java.util.concurrent.TimeUnit;

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -45,7 +46,6 @@ public class UsersFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_users, container, false);
         ButterKnife.bind(this, view);
         initData();
-        initRecyclerView();
         return view;
     }
 
@@ -57,12 +57,12 @@ public class UsersFragment extends Fragment {
             public void onResponse(Call<List<User>> call, Response<List<User>> response) {
                 if (response.body() != null) {
                     userList.addAll(response.body());
+                    initRecyclerView();
                 }
             }
 
             @Override
             public void onFailure(Call<List<User>> call, Throwable t) {
-                System.out.println("请求失败");
             }
         });
     }
@@ -91,6 +91,5 @@ public class UsersFragment extends Fragment {
         public void onDraw(@NonNull Canvas c, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
             super.onDraw(c, parent, state);
         }
-
     }
 }

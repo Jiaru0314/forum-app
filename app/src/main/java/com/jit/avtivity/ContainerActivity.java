@@ -1,6 +1,7 @@
 package com.jit.avtivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -25,6 +26,7 @@ import java.lang.reflect.Field;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class ContainerActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
@@ -34,6 +36,9 @@ public class ContainerActivity extends AppCompatActivity implements BottomNaviga
     BottomNavigationView navigation;
     @BindView(R.id.search_view)
     SearchView searchView;
+    UsersFragment usersFragment = new UsersFragment();
+    RecommendFragment recommendFragment = new RecommendFragment();
+    UserFragment userFragment = new UserFragment();
 
     //默认选择第一个fragment
     private int lastSelectedPosition = 0;
@@ -45,6 +50,20 @@ public class ContainerActivity extends AppCompatActivity implements BottomNaviga
         setContentView(R.layout.activity_container);
         ButterKnife.bind(this);
         initFragments();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                Intent intent = new Intent(ContainerActivity.this, ResultActivity.class);
+                intent.putExtra("query", query);
+                startActivity(intent);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
     }
 
     private void initFragments() {
@@ -52,15 +71,12 @@ public class ContainerActivity extends AppCompatActivity implements BottomNaviga
         navigation.setOnNavigationItemSelectedListener(this);
         //平均布局
         setItemType(navigation);
-        UsersFragment usersFragment = new UsersFragment();
-        RecommendFragment recommendFragment = new RecommendFragment();
-        UserFragment userFragment = new UserFragment();
+
         fragments = new Fragment[]{recommendFragment, usersFragment, userFragment};
         //默认提交第一个
         getSupportFragmentManager()
                 .beginTransaction()
                 .add(R.id.fl_main, recommendFragment)//添加
-                .show(recommendFragment)//展示
                 .commit();//提交
     }
 
@@ -90,7 +106,6 @@ public class ContainerActivity extends AppCompatActivity implements BottomNaviga
         }
         return false;
     }
-
 
     private void setDefaultFragment(int lastIndex, int index) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -131,4 +146,8 @@ public class ContainerActivity extends AppCompatActivity implements BottomNaviga
         }
     }
 
+    @OnClick(R.id.toNewBlog)
+    public void toNewBlog(View view) {
+        startActivity(new Intent(this, NewBlogActivity.class));
+    }
 }

@@ -42,4 +42,6 @@ public class BlogDto {
 
     private Boolean is_commentabled;
 
+    private List<Comment> comments;
+
 }

@@ -15,8 +15,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.jit.R;
 import com.jit.avtivity.BlogActivity;
+import com.jit.avtivity.ResultActivity;
 import com.jit.bean.User;
-import com.jit.util.HttpUtil;
+import com.jit.utils.HttpUtil;
 
 import java.util.List;
 
@@ -52,8 +53,8 @@ public class LinearUserAdapter extends RecyclerView.Adapter<LinearUserAdapter.Li
         holder.tv_content.setText(user.getDescription());
         String path = user.getAvatar().substring(1);
         Glide.with(context).load(HttpUtil.BaseUrl + path).into(holder.imageView);
-        Intent intent = new Intent(context, BlogActivity.class);
-        intent.putExtra("blogId", position + 1);
+        Intent intent = new Intent(context, ResultActivity.class);
+        intent.putExtra("UserID", user.getId());
         holder.linearLayout.setOnClickListener((v) -> context.startActivity(intent));
     }
 

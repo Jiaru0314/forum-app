@@ -10,15 +10,15 @@
         android:icon="@mipmap/follow"
         android:title="热门" />
 
-    <item
-        android:id="@+id/navigation_publish"
-        android:icon="@mipmap/publish"
-        android:title="发布" />
+    <!--    <item
+            android:id="@+id/navigation_publish"
+            android:icon="@mipmap/publish"
+            android:title="发布" />-->
 
-    <item
-        android:id="@+id/navigation_friend"
-        android:icon="@mipmap/friend"
-        android:title="朋友" />
+    <!--    <item
+            android:id="@+id/navigation_friend"
+            android:icon="@mipmap/friend"
+            android:title="朋友" />-->
 
     <item
         android:id="@+id/navigation_me"

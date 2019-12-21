@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,6 +19,8 @@ import com.jit.adapter.LinearBlogAdapter;
 import com.jit.bean.BlogDto;
 import com.jit.retrofit.ApiService;
 import com.jit.retrofit.RetrofitManager;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +42,6 @@ public class RecommendFragment extends Fragment {
     XRecyclerView meyerView;
     private LinearBlogAdapter linearAdapter;
     private List<BlogDto> blogList = new ArrayList<>();
-    private final String Tag = "RecommendFragment";
 
     @Nullable
     @Override
@@ -47,39 +49,7 @@ public class RecommendFragment extends Fragment {
         View view = inflater.inflate(R.layout.xrecycler_view, container, false);
         ButterKnife.bind(this, view);
         initData();
-        initRecyclerView();
-        return view;
-    }
-
-
-    private void initData() {
-        ApiService apiService = RetrofitManager.getInstance().getService();
-        Call<List<BlogDto>> callBlogList = apiService.getRandList();
-        callBlogList.enqueue(new Callback<List<BlogDto>>() {
-            @Override
-            public void onResponse(Call<List<BlogDto>> call, Response<List<BlogDto>> response) {
-                if (response.body() != null) {
-                    blogList.addAll(response.body());//Collections.addAll()
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<BlogDto>> call, Throwable t) {
-                System.out.println(Tag + "请求失败");
-            }
-        });
-
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-    }
-
-    private void initRecyclerView() {
         meyerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        linearAdapter = new LinearBlogAdapter(getActivity(), blogList);
-        meyerView.setAdapter(linearAdapter);
         meyerView.setRefreshProgressStyle(ProgressStyle.BallSpinFadeLoader);
         meyerView.setLoadingMoreProgressStyle(ProgressStyle.BallClipRotate);
         meyerView.setPullRefreshEnabled(true);//设置可以上拉
@@ -97,7 +67,6 @@ public class RecommendFragment extends Fragment {
             @Override
             public void onLoadMore() {
                 new Handler().postDelayed(() -> {
-                    blogList.clear();
                     initData();
                     //刷新完成
                     linearAdapter.notifyDataSetChanged();
@@ -105,5 +74,35 @@ public class RecommendFragment extends Fragment {
                 }, 1000);
             }
         });
+        return view;
+    }
+
+    private void initData() {
+        ApiService apiService = RetrofitManager.getInstance().getService();
+        Call<List<BlogDto>> callBlogList = apiService.getRandList();
+        callBlogList.enqueue(new Callback<List<BlogDto>>() {
+            @Override
+            public void onResponse(Call<List<BlogDto>> call, Response<List<BlogDto>> response) {
+                if (response.body() != null) {
+                    blogList.addAll(response.body());
+                    initRecyclerView();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<BlogDto>> call, Throwable t) {
+                System.out.println("用户列表请求失败");
+            }
+        });
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+    }
+
+    private void initRecyclerView() {
+        linearAdapter = new LinearBlogAdapter(getActivity(), blogList);
+        meyerView.setAdapter(linearAdapter);
     }
 }

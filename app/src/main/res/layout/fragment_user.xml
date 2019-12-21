@@ -25,6 +25,7 @@
 
             <!--头部信息-->
             <LinearLayout
+                android:id="@+id/lyout_userInfo"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:orientation="horizontal">
@@ -87,7 +88,7 @@
                             android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/bar_subscribe_count"
+                                android:id="@+id/user_folws_num"
                                 android:layout_width="match_parent"
                                 android:layout_height="43dp"
                                 android:gravity="center_horizontal|bottom"
@@ -118,7 +119,7 @@
                             android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/bar_follow_count"
+                                android:id="@+id/user_fans_num"
                                 android:layout_width="match_parent"
                                 android:layout_height="43dp"
                                 android:gravity="center_horizontal|bottom"
